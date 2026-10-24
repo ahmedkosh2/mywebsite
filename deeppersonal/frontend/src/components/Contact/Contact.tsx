@@ -182,7 +182,10 @@ const Contact = ({ about, lang }: ContactProps) => {
     e.preventDefault();
   
     try {
-      const res = await fetch('http://localhost:8000/api/contact/', {
+      const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+
+const res = await fetch(`${API_BASE_URL}/api/contact/`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

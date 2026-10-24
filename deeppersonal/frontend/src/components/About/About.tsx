@@ -66,7 +66,11 @@ const About = ({ about, lang }: AboutProps) => {
         <motion.div variants={item} className="flex-shrink-0">
   <div className="relative">
     <img
-      src={about.photo}
+      src={
+        about.photo?.startsWith('http')
+          ? about.photo
+          : `${process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000'}${about.photo}`
+      } 
       alt="Profile"
       className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-blue-400 shadow-lg"
     />
